@@ -3,14 +3,22 @@
 // import word array from file
 import { words } from './modules/4_letter_words.js'
 
+let row = 1 // 1-6 .guess-row[1-6]
+let box = 1 // 1-4 .guess-row[1-6].box[1-4]
+
 // get random word
 let word = words[Math.floor(Math.random() * words.length)].toLowerCase()
 let charFreq = {}
 console.log(word)
 
+let hintIndex = Math.floor(Math.random() * word.length)
+let hint = word[hintIndex]
+console.log(hint)
 
-let row = 1 // 1-6 .guess-row[1-6]
-let box = 1 // 1-4 .guess-row[1-6].box[1-4]
+let hintBox = document.querySelector(`.guess-row${row} .box${hintIndex + 1}`)
+hintBox.innerHTML = hint.toUpperCase()
+hintBox.classList.add('hint')
+
 
 const WORD_SIZE = 4
 const NUMBER_OF_ROWS = 6
@@ -25,10 +33,7 @@ let guess = []
 let guess_str = ""
 
 
-// COLORS (added to display list and applied to boxes)
-// const GRAY = "#abaeb3"
-// const GREEN = "#05f541"
-// const YELLOW = "#edf505"
+// COLORS (added to display list and classes applied to boxes)
 const GRAY = "gray"
 const GREEN = "green"
 const YELLOW = "yellow"
@@ -36,8 +41,11 @@ const YELLOW = "yellow"
 // build display list
 let display_list = []
 
+// joke .. find some other effects
 const odeToJoy = new Audio('otj.mp3')
 
+
+// TOGGLES (sound, hints, etc...)
 
 // END -- GAME SETUP -- END //
 
@@ -163,9 +171,12 @@ function enterLetter(e) {
                     console.log("not enough letters animation")
                 } else {
                     let letter = key.innerHTML // get letter from key pressed
+                    if (currentBox.classList.contains('hint')) {
+                        currentBox.classList.remove('hint')
+                    }
                     currentBox.innerHTML = key.innerHTML // insert letter in box
                     guess.push(letter) // insert letter in guess array
-                    document.querySelector(`.guess-row${row} .box${box}`).classList.add('filled-box')
+                    currentBox.classList.add('filled-box')
                     box += 1
                 }
         }
