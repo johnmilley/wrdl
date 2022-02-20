@@ -1,5 +1,7 @@
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 h1 {
@@ -10,6 +12,19 @@ h1 {
 
 html {
     font-size: 10px;
+    height: 100%;
+}
+
+body {
+    overflow-y: hidden;
+    height: 100%;
+}
+
+#game {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
 }
 
 #board {
@@ -18,7 +33,6 @@ html {
     align-items: center;
     margin: 0 auto;
     width: 50%;
-    margin-bottom: 10rem;
 }
 
 .row {
@@ -41,9 +55,8 @@ html {
 }
 
 #keyboard {
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* align-items: center; */
+    user-select: none;
+    justify-self: start;
 }
 
 .kb-row{
@@ -51,15 +64,15 @@ html {
     width: 100%;
     margin: 0 auto 8px;
     justify-content: center;
-    touch-action: manipulation;
+    touch-action: manipulation; /* disable double-tap zoom on mobile */
     flex-wrap: nowrap;
 }
 
 .key {
-    /* padding: 2.3rem 1.5rem; */
     width: 4rem;
-    height: 5rem;
-    margin: 0 6px 0 0;
+    height: 6rem;
+    margin: 0 3px 0;
+    color: #000; /* ios 15 bug colored keys blue */
     cursor: pointer;
     border: none;
     border-radius: 3px;
