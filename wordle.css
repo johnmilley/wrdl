@@ -1,0 +1,91 @@
+* {
+    box-sizing: border-box;
+}
+
+h1 {
+    font-family: 'Butterfly Kids', cursive;
+    font-size: 5em;
+    text-align: center;
+}
+
+html {
+    font-size: 10px;
+}
+
+#board {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    width: 50%;
+    margin-bottom: 10rem;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    width: 5.5rem;
+    height: 5.5rem;
+    border: 2px solid rgba(169, 169, 169, 0.548);
+    margin: 0.3rem;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+#keyboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.kb-row{
+    margin: 0.2rem;
+    flex-wrap: nowrap;
+}
+
+.key {
+    /* padding: 2.3rem 1.5rem; */
+    width: 4rem;
+    height: 5rem;
+    margin: 0.08rem;
+    border: none;
+    border-radius: 3px;
+    background-color: rgba(169, 169, 169, 0.397);
+    font-weight: bold;
+}
+
+.key-plus-half {
+    width: 6rem;
+    font-size: 1em;
+}
+
+.green {
+    background-color: rgb(102, 175, 102);
+    border: none;
+    color: white;
+}
+
+.yellow {
+    background-color: rgb(238, 199, 92);
+    border: none;
+    color: white;
+}
+
+.gray {
+    background-color: rgb(109, 109, 109);
+    border: none;
+    color: white;
+}
+
+.filled-box {
+    border: 2px solid rgb(42, 42, 42);
+    transition: border 0.05s ease-in;
+}
