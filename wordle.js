@@ -6,7 +6,7 @@ import { words } from './modules/4_letter_words.js'
 
 // load sounds
 
-const blip = new Audio('sounds/blip.wav')
+// const blip = new Audio('sounds/blip.wav')
 const bloop = new Audio('sounds/bloop.wav')
 const win = new Audio('sounds/win.wav')
 
@@ -83,6 +83,7 @@ function beginCountDown() {
     function countDown() {
         if (i < 4) {
             firstRow[i].classList.add('start-animation')
+            const blip = new Audio('sounds/blip.wav') 
             blip.play()
         }
         i += 1
