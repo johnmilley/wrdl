@@ -76,8 +76,8 @@ body {
     cursor: pointer;
     border: none;
     border-radius: 3px;
-    background-color: rgba(169, 169, 169, 0.397);
-    font-weight: 500;
+    background-color: rgba(141, 141, 141, 0.397);
+    font-weight: 600;
 }
 
 .key-plus-half {
