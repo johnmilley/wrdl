@@ -41,13 +41,17 @@ html {
 }
 
 #keyboard {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* align-items: center; */
 }
 
 .kb-row{
-    margin: 0.2rem;
+    display: flex;
+    width: 100%;
+    margin: 0 auto 8px;
+    justify-content: center;
+    /* margin: 0.2rem; */
     flex-wrap: nowrap;
 }
 
@@ -55,11 +59,12 @@ html {
     /* padding: 2.3rem 1.5rem; */
     width: 4rem;
     height: 5rem;
-    margin: 0.08rem;
+    margin: 0 6px 0 0;
+    cursor: pointer;
     border: none;
     border-radius: 3px;
     background-color: rgba(169, 169, 169, 0.397);
-    font-weight: bold;
+    font-weight: 500;
 }
 
 .key-plus-half {
