@@ -3,6 +3,15 @@
 // import word array from file
 import { words } from './modules/4_letter_words.js'
 
+
+// load sounds
+
+const blip = new Audio('sounds/blip.wav')
+const bloop = new Audio('sounds/bloop.wav')
+const win = new Audio('sounds/win.wav')
+
+// joke .. find some other effects
+
 let row = 1 // 1-6 .guess-row[1-6]
 let box = 1 // 1-4 .guess-row[1-6].box[1-4]
 
@@ -13,18 +22,15 @@ console.log(word)
 
 let hintIndex = Math.floor(Math.random() * word.length)
 let hint = word[hintIndex]
-console.log(hint)
-
 let hintBox = document.querySelector(`.guess-row${row} .box${hintIndex + 1}`)
-hintBox.innerHTML = hint.toUpperCase()
-hintBox.classList.add('hint')
-
+console.log(hint)
 
 const WORD_SIZE = 4
 const NUMBER_OF_ROWS = 6
 
 let correct = false
 let game_end = false
+let game_start = false
 
 // guess list
 let guess = []
@@ -41,8 +47,64 @@ const YELLOW = "yellow"
 // build display list
 let display_list = []
 
-// joke .. find some other effects
-const odeToJoy = new Audio('otj.mp3')
+
+
+const startGameButton = document.querySelector("#start-game-btn")
+startGameButton.addEventListener('click', beginCountDown)
+startGameButton.addEventListener('touchstart', beginCountDown)
+
+
+const buttons = document.querySelectorAll('.key')
+buttons.forEach(button => button.addEventListener('click', enterLetter))
+buttons.forEach(button => button.addEventListener('touchstart', enterLetter))
+
+window.addEventListener('keydown', enterLetter)
+/// END TEST
+
+
+// ANIMATION
+
+const firstRow = [...document.querySelector(`.guess-row1`).children]
+const rules = document.querySelector('#rules')
+const board = document.querySelector(`#board`)
+const keyboard = document.querySelector(`#keyboard`)
+
+function beginCountDown() {
+    let i = 0
+    if (!game_end && !game_start) {
+        rules.classList.toggle('hide')
+        startGameButton.classList.toggle('hide')
+        keyboard.classList.toggle('hide')
+        board.classList.toggle('hide')
+        const intervalTimer = setInterval(countDown, 500, i);
+        setTimeout(startGame, 3001, intervalTimer);
+    }
+
+    function countDown() {
+        if (i < 4) {
+            firstRow[i].classList.add('start-animation')
+            blip.play()
+        }
+        i += 1
+        // if i == 5 reveal hint, play sound
+        if (i === 6 ) {
+            console.log('DING')
+            bloop.play()
+            hintBox.innerHTML = hint.toUpperCase()
+            hintBox.classList.add('hint')
+        }
+    }
+    
+    function startGame(intervalTimer) {
+        clearInterval(intervalTimer);
+        console.log('start game')
+        game_start = true
+    }
+}
+
+
+
+
 
 
 // TOGGLES (sound, hints, etc...)
@@ -121,7 +183,7 @@ function checkGuess() {
     console.log(display_list)
     if (display_list.filter(color => color == GREEN).length === WORD_SIZE) {
         console.log('You WIN!');
-        odeToJoy.play()
+        win.play()
         game_end = true
     } else {
         row += 1 
@@ -137,6 +199,9 @@ function checkGuess() {
 
 // -- Add letter to board, keep track of board positon, call checkAnswer -- //
 function enterLetter(e) {
+    if (!game_start) {
+        return
+    }
     let key = null
     // check if key or button  // change to ternary
     if (e.type === 'click') {
@@ -182,9 +247,3 @@ function enterLetter(e) {
         }
     }
 }
-
-const buttons = document.querySelectorAll('.key')
- buttons.forEach(button => button.addEventListener('click', enterLetter))
- buttons.forEach(button => button.addEventListener('touchstart', enterLetter))
-
-window.addEventListener('keydown', enterLetter)
