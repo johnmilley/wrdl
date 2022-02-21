@@ -4,6 +4,10 @@
     padding: 0;
 }
 
+*:focus {
+    outline: none;
+}
+
 h1 {
     font-family: 'Butterfly Kids', cursive;
     font-size: 5em;
@@ -111,7 +115,7 @@ body {
 }
 
 .hint {
-    color: rgb(160, 160, 160);
+    color: rgb(133, 133, 133);
 }
 
 .start-animation {
@@ -134,8 +138,10 @@ body {
 #rules {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    /* align-items: center; */
     font-size: 2rem;
+    width: 50%;
+    margin: 0 auto;
     justify-items: space;
     height: 100%;
 }
@@ -146,8 +152,15 @@ body {
     align-items: center;
 }
 
-#rules * {
-    margin-bottom: 2rem;
+#rules {
+    padding: 4rem 4rem;
+    border: 2px solid black;
+    border-radius: 1rem;
+    display: flex;
+}
+
+#rules p {
+    font-size: 1.4rem;
 }
 
 #start-game-btn {
@@ -155,6 +168,18 @@ body {
     padding: 5rem 10rem;
     border-radius: 20rem;
     color: white;
-    font-size: 5rem;
+    font-size: 4rem;
     font-family: 'Roboto';
+    border: none;
+}
+
+#win-text {
+    padding: 5rem 10rem;
+    font-size: 14rem;
+    border: none;
+}
+#lose-text {
+    padding: 5rem 10rem;
+    font-size: 14rem;
+    border: none;
 }

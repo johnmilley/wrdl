@@ -12,6 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
     <div id="game">
@@ -22,11 +23,12 @@
         <div id="board-and-rules">
 
             <div id="rules">
-                <h2>How to Play</h2>
-                <p>rules</p>
-                <p>will</p>
-                <p>go</p>
-                <p>here</p>
+                <p>You have 6 tries to guess the 4-letter word.</p>
+                <p>Green letters are in the correct position.</p>
+                <p>Yellow letters are in the word but are out of positon.</p>
+                <p>Gray letters are not in the word.</p>
+                <p>You get one consonant for free!</p>
+                <p style="text-align: center;">Ready?</p>
             </div>
             <div id="board" class="hide">
                 <div class="guess-row1 row">
@@ -69,6 +71,8 @@
         </div>
         <div id="keyboard-and-button">
             <button id="start-game-btn">GO!</button>
+            <p id="win-text" class="hide">🎉</p>
+            <p id="lose-text" class="hide">😭</p>
             <div id="keyboard" class="hide">
                 <div class="kb-row kb-row1">
                     <button class="key" data-key="81">Q</button>
