@@ -154,13 +154,12 @@ body {
 
 #rules {
     padding: 4rem 4rem;
-    border: 2px solid black;
-    border-radius: 1rem;
     display: flex;
 }
 
 #rules p {
-    font-size: 1.4rem;
+    font-size: 1.8rem;
+    text-align: center;
 }
 
 #start-game-btn {
@@ -174,12 +173,12 @@ body {
 }
 
 #win-text {
-    padding: 5rem 10rem;
-    font-size: 14rem;
+    /* padding: 5rem 10rem; */
+    font-size: 10rem;
     border: none;
 }
 #lose-text {
-    padding: 5rem 10rem;
-    font-size: 14rem;
+    /* padding: 5rem 10rem; */
+    font-size: 10rem;
     border: none;
 }
